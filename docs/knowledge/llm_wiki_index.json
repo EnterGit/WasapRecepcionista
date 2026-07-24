@@ -1,0 +1,786 @@
+{
+  "empresa_all_solutions_spa": {
+    "id": "empresa_all_solutions_spa",
+    "title": "Ficha Corporativa All Solutions SpA",
+    "category": "Información Corporativa",
+    "tags": [
+      "all solutions",
+      "rut 77.654.321-k",
+      "ventascotizawasap@gmail.com",
+      "empresa",
+      "cotizaciones",
+      "automatizacion"
+    ],
+    "links": [
+      "drive_01_manuales_tecnicos",
+      "drive_02_cotizaciones_pendientes",
+      "drive_03_cotizaciones_aprobadas",
+      "drive_04_cotizaciones_rechazadas",
+      "ciclo_vida_cotizaciones"
+    ],
+    "summary": "All Solutions SpA (RUT: 77.654.321-K), Correo Electrónico Corporativo: ventascotizawasap@gmail.com. Empresa líder en soluciones de automatización de accesos, portones automáticos, citofonía y control de acceso. Opera con reglas comerciales estrictas: IVA 19% CLP desglosado, folios numéricos de cotización formato CE-XXXXX, trato formal 'Usted' y flujo de aprobación por WhatsApp / Chatwoot.",
+    "rut": "77.654.321-K",
+    "email": "ventascotizawasap@gmail.com"
+  },
+  "drive_01_manuales_tecnicos": {
+    "id": "drive_01_manuales_tecnicos",
+    "title": "Estructura Google Drive: 01_Manuales_Tecnicos",
+    "category": "Google Drive Infrastructure",
+    "tags": [
+      "google drive",
+      "01_manuales_tecnicos",
+      "manuales",
+      "fichas tecnicas",
+      "pdf",
+      "gemini rag"
+    ],
+    "links": [
+      "empresa_all_solutions_spa",
+      "manual_centurion_d5_smart",
+      "manual_primaport_roller_600hc",
+      "comunello_fort_600"
+    ],
+    "summary": "Carpeta raíz de Google Drive '01_Manuales_Tecnicos' para la cuenta ventascotizawasap@gmail.com. Almacena los manuales técnicos oficiales en PDF de los fabricantes (Centurion, PrimaPort, Comunello, PPA, Kocom, Commax, RTU 5024) utilizados para indexación RAG y consultas técnicas.",
+    "drivePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos"
+  },
+  "drive_02_cotizaciones_pendientes": {
+    "id": "drive_02_cotizaciones_pendientes",
+    "title": "Estructura Google Drive: 02_Cotizaciones_Pendientes",
+    "category": "Google Drive Infrastructure",
+    "tags": [
+      "google drive",
+      "02_cotizaciones_pendientes",
+      "cotizaciones pendientes",
+      "pdf",
+      "generada",
+      "enviada"
+    ],
+    "links": [
+      "empresa_all_solutions_spa",
+      "estado_cotizacion_generada",
+      "estado_cotizacion_enviada",
+      "ciclo_vida_cotizaciones"
+    ],
+    "summary": "Carpeta de Google Drive '02_Cotizaciones_Pendientes' donde se guardan automáticamente los archivos PDF de cotizaciones recién emitiadas (folios CE-XXXXX) en estados GENERADA y ENVIADA a la espera de confirmación.",
+    "drivePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\02_Cotizaciones_Pendientes"
+  },
+  "drive_03_cotizaciones_aprobadas": {
+    "id": "drive_03_cotizaciones_aprobadas",
+    "title": "Estructura Google Drive: 03_Cotizaciones_Aprobadas",
+    "category": "Google Drive Infrastructure",
+    "tags": [
+      "google drive",
+      "03_cotizaciones_aprobadas",
+      "cotizaciones aprobadas",
+      "pdf",
+      "aceptada",
+      "ventas"
+    ],
+    "links": [
+      "empresa_all_solutions_spa",
+      "estado_cotizacion_aceptada",
+      "ciclo_vida_cotizaciones"
+    ],
+    "summary": "Carpeta de Google Drive '03_Cotizaciones_Aprobadas' a la cual se reubican automáticamente los PDFs de cotizaciones cuando el cliente o ejecutivo confirma la propuesta (Estado ACEPTADA).",
+    "drivePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\03_Cotizaciones_Aprobadas"
+  },
+  "drive_04_cotizaciones_rechazadas": {
+    "id": "drive_04_cotizaciones_rechazadas",
+    "title": "Estructura Google Drive: 04_Cotizaciones_Rechazadas",
+    "category": "Google Drive Infrastructure",
+    "tags": [
+      "google drive",
+      "04_cotizaciones_rechazadas",
+      "cotizaciones rechazadas",
+      "pdf",
+      "rechazada",
+      "motivo rechazo"
+    ],
+    "links": [
+      "empresa_all_solutions_spa",
+      "estado_cotizacion_rechazada",
+      "ciclo_vida_cotizaciones"
+    ],
+    "summary": "Carpeta de Google Drive '04_Cotizaciones_Rechazadas' en la que se archivan los PDFs de cotizaciones declinadas (Estado RECHAZADA) en conjunto con el registro del motivo de rechazo en MySQL.",
+    "drivePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\04_Cotizaciones_Rechazadas"
+  },
+  "ciclo_vida_cotizaciones": {
+    "id": "ciclo_vida_cotizaciones",
+    "title": "Ciclo de Vida Completo de Cotizaciones",
+    "category": "Reglas de Negocio",
+    "tags": [
+      "ciclo de vida",
+      "estados",
+      "generada",
+      "enviada",
+      "aceptada",
+      "rechazada",
+      "cotizaciones"
+    ],
+    "links": [
+      "estado_cotizacion_generada",
+      "estado_cotizacion_enviada",
+      "estado_cotizacion_aceptada",
+      "estado_cotizacion_rechazada",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Ciclo de vida transaccional de una cotización en All Solutions SpA. Consta de 4 estados ENUM obligatorios en MySQL: GENERADA (creación del borrador), ENVIADA (despacho al cliente vía WhatsApp/Email), ACEPTADA (aprobación comercial) y RECHAZADA (declinada con causa justificada).",
+    "enumEstados": [
+      "GENERADA",
+      "ENVIADA",
+      "ACEPTADA",
+      "RECHAZADA"
+    ]
+  },
+  "estado_cotizacion_generada": {
+    "id": "estado_cotizacion_generada",
+    "title": "Estado Cotización: GENERADA",
+    "category": "Estados de Cotización",
+    "tags": [
+      "generada",
+      "estado",
+      "borrador",
+      "folio ce",
+      "02_cotizaciones_pendientes"
+    ],
+    "links": [
+      "ciclo_vida_cotizaciones",
+      "drive_02_cotizaciones_pendientes",
+      "estado_cotizacion_enviada"
+    ],
+    "summary": "Estado inicial 'GENERADA'. La cotización ha sido procesada por la lógica de precios (pricingService), registrada en MySQL tabla 'cotizaciones' y el documento PDF ha sido almacenado en '02_Cotizaciones_Pendientes'.",
+    "statusCode": "GENERADA"
+  },
+  "estado_cotizacion_enviada": {
+    "id": "estado_cotizacion_enviada",
+    "title": "Estado Cotización: ENVIADA",
+    "category": "Estados de Cotización",
+    "tags": [
+      "enviada",
+      "estado",
+      "whatsapp",
+      "meta cloud api",
+      "02_cotizaciones_pendientes"
+    ],
+    "links": [
+      "ciclo_vida_cotizaciones",
+      "drive_02_cotizaciones_pendientes",
+      "estado_cotizacion_aceptada",
+      "estado_cotizacion_rechazada"
+    ],
+    "summary": "Estado 'ENVIADA'. Indica que la propuesta comercial PDF fue enviada al número telefónico del cliente mediante WhatsApp Meta Cloud API o correo ventascotizawasap@gmail.com.",
+    "statusCode": "ENVIADA"
+  },
+  "estado_cotizacion_aceptada": {
+    "id": "estado_cotizacion_aceptada",
+    "title": "Estado Cotización: ACEPTADA",
+    "category": "Estados de Cotización",
+    "tags": [
+      "aceptada",
+      "estado",
+      "aprobada",
+      "cierre comercial",
+      "03_cotizaciones_aprobadas"
+    ],
+    "links": [
+      "ciclo_vida_cotizaciones",
+      "drive_03_cotizaciones_aprobadas"
+    ],
+    "summary": "Estado 'ACEPTADA'. Representa una cotización confirmada por el cliente. Desencadena la reubicación del PDF a la carpeta '03_Cotizaciones_Aprobadas' y la actualización de KPIs de conversión.",
+    "statusCode": "ACEPTADA"
+  },
+  "estado_cotizacion_rechazada": {
+    "id": "estado_cotizacion_rechazada",
+    "title": "Estado Cotización: RECHAZADA",
+    "category": "Estados de Cotización",
+    "tags": [
+      "rechazada",
+      "estado",
+      "motivo rechazo",
+      "04_cotizaciones_rechazadas"
+    ],
+    "links": [
+      "ciclo_vida_cotizaciones",
+      "drive_04_cotizaciones_rechazadas"
+    ],
+    "summary": "Estado 'RECHAZADA'. Ocurre cuando el cliente rechaza la cotización. Requiere la captura obligatoria de 'motivo_rechazo' en MySQL y traslada el PDF a '04_Cotizaciones_Rechazadas'.",
+    "statusCode": "RECHAZADA"
+  },
+  "manual_centurion_d5_smart": {
+    "id": "manual_centurion_d5_smart",
+    "title": "Ficha Técnica y Manual Motor Corredera Centurion D5 Smart",
+    "category": "Motores Corredera",
+    "tags": [
+      "centurion",
+      "d5 smart",
+      "motor corredera",
+      "500kg",
+      "alta velocidad",
+      "36m/min",
+      "smartphone",
+      "mycentsys pro",
+      "bateria 24v",
+      "all solutions",
+      "cotizacion"
+    ],
+    "links": [
+      "manual_centurion_d10_smart",
+      "manual_centurion_d20_smart",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Motor de corredera ultra rápido para portones de hasta 500 kg (SKU: CENT-D5-SMART). Velocidad regulable hasta 36 m/min para alta frecuencia de tráfico. Alimentación 24VDC con respaldo de batería dual y cargador inteligente integrado. Configuración y diagnóstico vía Bluetooth/Smartphone con la app MyCentsys Pro. Receptor CENTSYS 433MHz integrado (hasta 1500 botones). Precio neto: $425.000 CLP, IVA (19%): $80.750 CLP, Total: $505.750 CLP. Stock disponible: 18 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Cent D10 Smart - D10 Turbo Smart - D20 Smart.pdf",
+    "sku": "CENT-D5-SMART",
+    "precioNeto": 425000,
+    "iva": 80750,
+    "precioTotal": 505750,
+    "stock": 18
+  },
+  "manual_centurion_d10_smart": {
+    "id": "manual_centurion_d10_smart",
+    "title": "Ficha Técnica y Manual Motor Corredera Centurion D10 Smart / Turbo",
+    "category": "Motores Corredera",
+    "tags": [
+      "centurion",
+      "d10 smart",
+      "d10 turbo",
+      "motor corredera",
+      "1000kg",
+      "26m/min",
+      "condominial",
+      "bateria 24v",
+      "mycentsys pro",
+      "cotizacion"
+    ],
+    "links": [
+      "manual_centurion_d5_smart",
+      "manual_centurion_d20_smart",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Motor de corredera de alto rendimiento para portones de hasta 1000 kg (SKU: CENT-D10-SMART). Velocidad de desplazamiento hasta 26 m/min (o versión Turbo hasta 45 m/min para 700kg). Sistema 24VDC continuo para comunidades y condominios. Gestión total por MyCentsys Pro App. Protección IP54 contra intemperie. Precio neto: $680.000 CLP, IVA (19%): $129.200 CLP, Total: $809.200 CLP. Stock disponible: 12 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Cent D10 Smart - D10 Turbo Smart - D20 Smart.pdf",
+    "sku": "CENT-D10-SMART",
+    "precioNeto": 680000,
+    "iva": 129200,
+    "precioTotal": 809200,
+    "stock": 12
+  },
+  "manual_centurion_d20_smart": {
+    "id": "manual_centurion_d20_smart",
+    "title": "Ficha Técnica y Manual Motor Corredera Centurion D20 Smart Industrial",
+    "category": "Motores Corredera",
+    "tags": [
+      "centurion",
+      "d20 smart",
+      "motor corredera",
+      "2000kg",
+      "industrial",
+      "heavy-duty",
+      "24vdc",
+      "mycentsys pro",
+      "cotizacion"
+    ],
+    "links": [
+      "manual_centurion_d10_smart",
+      "ppa_brutalle_2000",
+      "comunello_fort_1500",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor de corredera industrial heavy-duty para portones pesados de hasta 2000 kg (SKU: CENT-D20-SMART). Velocidad 20 m/min, empuje máximo 52kgf. Tecnología 24VDC con redundancia de baterías y electrónica aislada. Configuración inalámbrica mediante MyCentsys Pro. Control de aceleración y desaceleración avanzado. Precio neto: $980.000 CLP, IVA (19%): $186.200 CLP, Total: $1.166.200 CLP. Stock disponible: 8 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Cent D10 Smart - D10 Turbo Smart - D20 Smart.pdf",
+    "sku": "CENT-D20-SMART",
+    "precioNeto": 980000,
+    "iva": 186200,
+    "precioTotal": 1166200,
+    "stock": 8
+  },
+  "comunello_fort_400": {
+    "id": "comunello_fort_400",
+    "title": "Ficha Técnica Motor Corredera Comunello Fort 400",
+    "category": "Motores Corredera",
+    "tags": [
+      "comunello",
+      "fort 400",
+      "motor corredera",
+      "400kg",
+      "24vdc",
+      "cu-24v-hp",
+      "italiano",
+      "residencial",
+      "cotizacion"
+    ],
+    "links": [
+      "comunello_fort_600",
+      "comunello_fort_800",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor de corredera italiano Comunello Fort 400 para portones residenciales de hasta 400 kg (SKU: COM-FORT-400). Alimentación 24VDC, central electrónica CU-24V-HP integrada con encoder óptico para máxima detección de obstáculos y ajuste milimétrico de fines de carrera. Grado de protección IP44. Precio neto: $340.000 CLP, IVA (19%): $64.600 CLP, Total: $404.600 CLP. Stock disponible: 15 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\comunello-automation-fort_600_800_1000_1500-00-scheda_di_prodotto-es.pdf",
+    "sku": "COM-FORT-400",
+    "precioNeto": 340000,
+    "iva": 64600,
+    "precioTotal": 404600,
+    "stock": 15
+  },
+  "comunello_fort_600": {
+    "id": "comunello_fort_600",
+    "title": "Ficha Técnica Motor Corredera Comunello Fort 600",
+    "category": "Motores Corredera",
+    "tags": [
+      "comunello",
+      "fort 600",
+      "motor corredera",
+      "600kg",
+      "230vac",
+      "24vdc",
+      "italiano",
+      "cu 24v hp",
+      "cotizacion"
+    ],
+    "links": [
+      "comunello_fort_400",
+      "comunello_fort_800",
+      "manual_primaport_roller_600hc",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor electromecánico Comunello Fort 600 para portones corredera de hasta 600 kg (SKU: COM-FORT-600 / COMU-FORT-600). Base de aluminio inyectado de alta resistencia, engranajes fundidos a presión, lubricación permanente. Compatible con central CU 24V HP o CU 230V HP. Receptor de radio 433.92MHz. Precio neto: $389.000 CLP, IVA (19%): $73.910 CLP, Total: $462.910 CLP. Stock disponible: 25 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\comunello-automation-fort_600_800_1000_1500-00-scheda_di_prodotto-es.pdf",
+    "sku": "COMU-FORT-600",
+    "precioNeto": 389000,
+    "iva": 73910,
+    "precioTotal": 462910,
+    "stock": 25
+  },
+  "comunello_fort_800": {
+    "id": "comunello_fort_800",
+    "title": "Ficha Técnica Motor Corredera Comunello Fort 800",
+    "category": "Motores Corredera",
+    "tags": [
+      "comunello",
+      "fort 800",
+      "motor corredera",
+      "800kg",
+      "230vac",
+      "condominial",
+      "italiano",
+      "cotizacion"
+    ],
+    "links": [
+      "comunello_fort_600",
+      "comunello_fort_1000",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor electromecánico de corredera Comunello Fort 800 para portones de hasta 800 kg de peso (SKU: COM-FORT-800). Motor monofásico 230VAC, fuerza de tracción 700N, fines de carrera mecánicos o magnéticos. Desbloqueo manual con palanca de aluminio y llave personalizada. Precio neto: $440.000 CLP, IVA (19%): $83.600 CLP, Total: $523.600 CLP. Stock disponible: 14 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\comunello-automation-fort_600_800_1000_1500-00-scheda_di_prodotto-es.pdf",
+    "sku": "COM-FORT-800",
+    "precioNeto": 440000,
+    "iva": 83600,
+    "precioTotal": 523600,
+    "stock": 14
+  },
+  "comunello_fort_1000": {
+    "id": "comunello_fort_1000",
+    "title": "Ficha Técnica Motor Corredera Comunello Fort 1000",
+    "category": "Motores Corredera",
+    "tags": [
+      "comunello",
+      "fort 1000",
+      "motor corredera",
+      "1000kg",
+      "230vac",
+      "heavy-duty",
+      "italiano",
+      "cotizacion"
+    ],
+    "links": [
+      "comunello_fort_800",
+      "comunello_fort_1500",
+      "manual_centurion_d10_smart",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor de corredera de uso intensivo Comunello Fort 1000 para portones condominiales e industriales de hasta 1000 kg (SKU: COM-FORT-1000). Motor 230VAC con 900N de empuje, engranajes reductores de aleación de bronce y acero tratado térmicamente. Cuadro de mando con función anti-aplastamiento y desaceleración. Precio neto: $520.000 CLP, IVA (19%): $98.800 CLP, Total: $618.800 CLP. Stock disponible: 10 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\comunello-automation-fort_600_800_1000_1500-00-scheda_di_prodotto-es.pdf",
+    "sku": "COM-FORT-1000",
+    "precioNeto": 520000,
+    "iva": 98800,
+    "precioTotal": 618800,
+    "stock": 10
+  },
+  "comunello_fort_1500": {
+    "id": "comunello_fort_1500",
+    "title": "Ficha Técnica Motor Corredera Comunello Fort 1500 Industrial",
+    "category": "Motores Corredera",
+    "tags": [
+      "comunello",
+      "fort 1500",
+      "motor corredera",
+      "1500kg",
+      "230vac",
+      "industrial",
+      "italiano",
+      "cotizacion"
+    ],
+    "links": [
+      "comunello_fort_1000",
+      "ppa_brutalle_2000",
+      "manual_centurion_d20_smart",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor industrial de corredera Comunello Fort 1500 para grandes portones comerciales de hasta 1500 kg (SKU: COM-FORT-1500). Fuerza de arrastre 1400N, 230VAC, construcción robusta anti-vandalismo en aluminio inyectado. Admite relés de luz de cortesía y semáforos condominiales. Precio neto: $650.000 CLP, IVA (19%): $123.500 CLP, Total: $773.500 CLP. Stock disponible: 6 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\comunello-automation-fort_600_800_1000_1500-00-scheda_di_prodotto-es.pdf",
+    "sku": "COM-FORT-1500",
+    "precioNeto": 650000,
+    "iva": 123500,
+    "precioTotal": 773500,
+    "stock": 6
+  },
+  "manual_primaport_roller_600hc": {
+    "id": "manual_primaport_roller_600hc",
+    "title": "Manual Técnico Primaport Roller 600FC / 600HC Smart",
+    "category": "Motores Corredera",
+    "tags": [
+      "primaport",
+      "roller 600fc",
+      "roller 600hc",
+      "demo-600smart",
+      "motor corredera",
+      "600kg",
+      "porton corredera",
+      "433mhz",
+      "all solutions",
+      "cotizacion"
+    ],
+    "links": [
+      "primaport_roller_1000dx",
+      "comunello_fort_600",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Motor para portones corredera de hasta 600 kg de peso y 4.5m de largo máximo (SKU: DEMO-600SMART / PRIMA-R600FC). Alimentación 220V/50Hz, potencia 280W, velocidad 12 m/min, receptor 433MHz integrado, incluye 2 controles remotos. Admite conexión de fotoceldas de seguridad y luz destellante. Precio neto: $311.000 CLP, IVA (19%): $59.090 CLP, Total: $370.090 CLP. Stock disponible: 45 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Primaport roller 600HC.pdf",
+    "sku": "DEMO-600SMART",
+    "precioNeto": 311000,
+    "iva": 59090,
+    "precioTotal": 370090,
+    "stock": 45
+  },
+  "primaport_roller_1000dx": {
+    "id": "primaport_roller_1000dx",
+    "title": "Ficha Técnica Motor Corredera PrimaPort Roller 1000DX / Roller 1000 24V",
+    "category": "Motores Corredera",
+    "tags": [
+      "primaport",
+      "roller 1000dx",
+      "roller 1000",
+      "motor corredera",
+      "1000kg",
+      "digital",
+      "24v bateria",
+      "cotizacion"
+    ],
+    "links": [
+      "manual_primaport_roller_600hc",
+      "comunello_fort_1000",
+      "ppa_dz_1300",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor corredera de alta potencia PrimaPort Roller 1000DX 24V con batería de respaldo (SKU: PRIMA-ROLLER-1000 / PRIMA-R1000DX). Pantalla digital incorporada en la central de mando para programación rápida de tiempos de pausa y fuerza. Incluye transmisores rolling code. Precio neto: $495.000 CLP, IVA (19%): $94.050 CLP, Total: $589.050 CLP. Stock disponible: 20 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Primaport roller 600HC.pdf",
+    "sku": "PRIMA-ROLLER-1000",
+    "precioNeto": 495000,
+    "iva": 94050,
+    "precioTotal": 589050,
+    "stock": 20
+  },
+  "ppa_stark_650": {
+    "id": "ppa_stark_650",
+    "title": "Ficha Técnica Motor Corredera PPA Stark 650 JetFlex Rápido",
+    "category": "Motores Corredera",
+    "tags": [
+      "ppa",
+      "stark 650",
+      "jetflex",
+      "rapido",
+      "motor corredera",
+      "650kg",
+      "inversor de frecuencia",
+      "cotizacion"
+    ],
+    "links": [
+      "ppa_dz_1300",
+      "ppa_brutalle_2000",
+      "manual_centurion_d5_smart",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor de corredera ultrarrápido PPA Stark 650 (SKU: PPA-STARK-650) con tecnología JetFlex (inversor de frecuencia trifásico). Capacidad de arrastre hasta 650 kg. Abre portones de 3 metros en tan solo 4.5 segundos. Riel de aluminio inyectado, destrabe por llave con segredo. Precio neto: $290.000 CLP, IVA (19%): $55.100 CLP, Total: $345.100 CLP. Stock disponible: 25 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "PPA-STARK-650",
+    "precioNeto": 290000,
+    "iva": 55100,
+    "precioTotal": 345100,
+    "stock": 25
+  },
+  "ppa_dz_1300": {
+    "id": "ppa_dz_1300",
+    "title": "Ficha Técnica Motor Corredera PPA DZ 1300 Ind Triphasic",
+    "category": "Motores Corredera",
+    "tags": [
+      "ppa",
+      "dz 1300",
+      "trifasico",
+      "industrial",
+      "motor corredera",
+      "1300kg",
+      "alto flujo",
+      "cotizacion"
+    ],
+    "links": [
+      "ppa_stark_650",
+      "ppa_brutalle_2000",
+      "comunello_fort_1500",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor industrial de corredera PPA DZ 1300 Ind Triphasic (SKU: PPA-DZ-1300) apto para 1300 kg. Equipada con motor trifásico y central inversora Triflex para aperturas suaves y de alta velocidad en condominios e industrias. Carcasa reinforced anti-impacto IPX4. Precio neto: $580.000 CLP, IVA (19%): $110.200 CLP, Total: $690.200 CLP. Stock disponible: 9 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "PPA-DZ-1300",
+    "precioNeto": 580000,
+    "iva": 110200,
+    "precioTotal": 690200,
+    "stock": 9
+  },
+  "ppa_brutalle_2000": {
+    "id": "ppa_brutalle_2000",
+    "title": "Ficha Técnica Motor Corredera PPA Brutalle 2000kg Heavy Duty",
+    "category": "Motores Corredera",
+    "tags": [
+      "ppa",
+      "brutalle 2000",
+      "motor corredera",
+      "2000kg",
+      "heavy-duty",
+      "bano en aceite",
+      "industrial",
+      "cotizacion"
+    ],
+    "links": [
+      "ppa_dz_1300",
+      "manual_centurion_d20_smart",
+      "comunello_fort_1500",
+      "fotoceldas_seguridad_multimarca",
+      "cremallera_acero_galvanizado"
+    ],
+    "summary": "Motor de corredera de máxima exigencia PPA Brutalle 2000kg (SKU: PPA-BRUT-2000). Reductor sumergido en baño de aceite mineral sintético para disipación térmica y vida útil continua bajo condiciones extremas. Diseñado para portones de naves industriales de hasta 2 toneladas. Precio neto: $890.000 CLP, IVA (19%): $169.100 CLP, Total: $1.059.100 CLP. Stock disponible: 5 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "PPA-BRUT-2000",
+    "precioNeto": 890000,
+    "iva": 169100,
+    "precioTotal": 1059100,
+    "stock": 5
+  },
+  "centurion_vantage_300": {
+    "id": "centurion_vantage_300",
+    "title": "Ficha Técnica Kit Motor Abatible Centurion Vantage 300 (Bifamiliar / Condominial)",
+    "category": "Motores Abatibles",
+    "tags": [
+      "centurion",
+      "vantage 300",
+      "motor abatible",
+      "piston 3m",
+      "24vdc",
+      "bateria de respaldo",
+      "dos hojas",
+      "cotizacion"
+    ],
+    "links": [
+      "centurion_vantage_500",
+      "manual_centurion_d5_smart",
+      "fotoceldas_seguridad_multimarca",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Kit de automatización para portones abatibles de 2 hojas Centurion Vantage 300 (SKU: CENT-VANT-300). Adecuado para hojas de hasta 3 metros de ancho (peso máx. 250 kg por hoja). Operación por pistones lineales electromecánicos a 24VDC con respaldo de batería de larga duración. Apertura ultra rápida e instalación sin soldadura pesada. Precio neto: $620.000 CLP, IVA (19%): $117.800 CLP, Total: $737.800 CLP. Stock disponible: 11 kits.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Cent D10 Smart - D10 Turbo Smart - D20 Smart.pdf",
+    "sku": "CENT-VANT-300",
+    "precioNeto": 620000,
+    "iva": 117800,
+    "precioTotal": 737800,
+    "stock": 11
+  },
+  "centurion_vantage_500": {
+    "id": "centurion_vantage_500",
+    "title": "Ficha Técnica Kit Motor Abatible Centurion Vantage 500 Heavy Duty",
+    "category": "Motores Abatibles",
+    "tags": [
+      "centurion",
+      "vantage 500",
+      "motor abatible",
+      "piston 5m",
+      "500kg por hoja",
+      "24vdc",
+      "heavy-duty",
+      "cotizacion"
+    ],
+    "links": [
+      "centurion_vantage_300",
+      "manual_centurion_d20_smart",
+      "fotoceldas_seguridad_multimarca",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Kit de brazos abatibles telescópicos de alto tránsito Centurion Vantage 500 (SKU: CENT-VANT-500). Para portones de 2 hojas de hasta 5 metros por hoja (hasta 500 kg por hoja). Carrera de pistón extendida, electrónica de control avanzada 24VDC con pantalla LCD y gestión de electrocerradura integrada. Precio neto: $790.000 CLP, IVA (19%): $150.100 CLP, Total: $940.100 CLP. Stock disponible: 7 kits.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Cent D10 Smart - D10 Turbo Smart - D20 Smart.pdf",
+    "sku": "CENT-VANT-500",
+    "precioNeto": 790000,
+    "iva": 150100,
+    "precioTotal": 940100,
+    "stock": 7
+  },
+  "kocom_citofono_wifi": {
+    "id": "kocom_citofono_wifi",
+    "title": "Ficha Técnica Intercomunicador Citófono WiFi Kocom Smart",
+    "category": "Citofonía y Control de Acceso",
+    "tags": [
+      "kocom",
+      "citofono wifi",
+      "intercomunicador",
+      "video portero",
+      "app tuya",
+      "smart life",
+      "pantalla touch",
+      "cotizacion"
+    ],
+    "links": [
+      "commax_citofono_wifi",
+      "rtu_5024_4g_controller",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Sistema de citofonía con pantalla táctil y conexión WiFi Kocom Smart (SKU: KOC-WIFI-01). Permite recibir videollamadas desde el frente de calle directamente en teléfonos inteligentes a través de la App Tuya / Smart Life. Apertura remota de cerraduras eléctricas y portones automatizados. Precio neto: $185.000 CLP, IVA (19%): $35.150 CLP, Total: $220.150 CLP. Stock disponible: 30 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "KOC-WIFI-01",
+    "precioNeto": 185000,
+    "iva": 35150,
+    "precioTotal": 220150,
+    "stock": 30
+  },
+  "commax_citofono_wifi": {
+    "id": "commax_citofono_wifi",
+    "title": "Ficha Técnica Videocitófono WiFi Commax Smart 7 Pulgadas",
+    "category": "Citofonía y Control de Acceso",
+    "tags": [
+      "commax",
+      "citofono wifi",
+      "videocitofono",
+      "7 pulgadas",
+      "vision nocturna",
+      "app commax hey call",
+      "cotizacion"
+    ],
+    "links": [
+      "kocom_citofono_wifi",
+      "rtu_5024_4g_controller",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Videocitófono de alta gama Commax WiFi Smart con monitor color de 7 pulgadas (SKU: CMX-WIFI-01). Cámara exterior metálica antivandálica con visión nocturna infrarroja. Aplicación móvil Commax Hey Call para atender a visitantes y activar portones a distancia vía internet. Precio neto: $210.000 CLP, IVA (19%): $39.900 CLP, Total: $249.900 CLP. Stock disponible: 25 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "CMX-WIFI-01",
+    "precioNeto": 210000,
+    "iva": 39900,
+    "precioTotal": 249900,
+    "stock": 25
+  },
+  "rtu_5024_4g_controller": {
+    "id": "rtu_5024_4g_controller",
+    "title": "Ficha Técnica Controlador de Apertura GSM / 4G RTU5024",
+    "category": "Control de Acceso y Telecomunicaciones",
+    "tags": [
+      "rtu 5024",
+      "4g lte",
+      "gsm gate opener",
+      "apertura por celular",
+      "200 usuarios",
+      "rele 3a",
+      "telecomunicaciones",
+      "cotizacion"
+    ],
+    "links": [
+      "kocom_citofono_wifi",
+      "commax_citofono_wifi",
+      "manual_centurion_d5_smart",
+      "manual_primaport_roller_600hc"
+    ],
+    "summary": "Controlador de apertura inalámbrico 4G LTE / GSM RTU5024 (SKU: RTU-5024-4G). Permite accionar portones automáticos mediante llamada telefónica sin costo o aplicación móvil. Memoria interna para hasta 200 usuarios autorizados. Configuración fácil por comandos SMS o App Android/iOS. Relé de salida 3A/240VAC. Precio neto: $55.000 CLP, IVA (19%): $10.450 CLP, Total: $65.450 CLP. Stock disponible: 60 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "RTU-5024-4G",
+    "precioNeto": 55000,
+    "iva": 10450,
+    "precioTotal": 65450,
+    "stock": 60
+  },
+  "fotoceldas_seguridad_multimarca": {
+    "id": "fotoceldas_seguridad_multimarca",
+    "title": "Ficha Técnica Fotoceldas de Seguridad Infrarrojas Multimarca",
+    "category": "Accesorios de Seguridad",
+    "tags": [
+      "fotoceldas",
+      "seguridad",
+      "infrarrojo",
+      "sensores",
+      "accesorios",
+      "12v",
+      "24v",
+      "all solutions",
+      "cotizacion"
+    ],
+    "links": [
+      "manual_primaport_roller_600hc",
+      "manual_centurion_d5_smart",
+      "comunello_fort_600",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Par de fotoceldas de seguridad infrarrojas emisor/receptor multimarca (SKU: ACC-FOTO-01). Compatibles con centrales de mando 12V/24V AC/DC. Alcance óptico de hasta 15 metros. Previenen el aplastamiento y cierre accidental del portón al detectar obstáculos en el haz infrarrojo. Indispensables para instalaciones seguras de motores Primaport, Centurion, Comunello y PPA. Precio neto: $28.500 CLP, IVA (19%): $5.415 CLP, Total: $33.915 CLP. Stock disponible: 120 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\Manual Central de Comandos Comunello CU 24V HP Español.pdf",
+    "sku": "ACC-FOTO-01",
+    "precioNeto": 28500,
+    "iva": 5415,
+    "precioTotal": 33915,
+    "stock": 120
+  },
+  "cremallera_acero_galvanizado": {
+    "id": "cremallera_acero_galvanizado",
+    "title": "Ficha Técnica Cremallera de Acero Galvanizado 1m M4",
+    "category": "Accesorios de Instalación",
+    "tags": [
+      "cremallera",
+      "acero galvanizado",
+      "modulo 4",
+      "accesorios",
+      "porton corredera",
+      "cotizacion"
+    ],
+    "links": [
+      "manual_primaport_roller_600hc",
+      "manual_centurion_d5_smart",
+      "comunello_fort_600",
+      "empresa_all_solutions_spa"
+    ],
+    "summary": "Cremallera de acero galvanizado de 1 metro de longitud Módulo 4 (SKU: ACC-CREM-ACERO) con pernos de sujeción y distanciadores para soldar a portones corredera. Transmite el movimiento mecánico del piñón del motor a la estructura del portón. Precio neto: $12.500 CLP, IVA (19%): $2.375 CLP, Total: $14.875 CLP. Stock disponible: 250 unidades.",
+    "filePath": "c:\\AgenteWASAP\\Gestion_Cotizacion\\docs\\drive\\01_Manuales_Tecnicos\\comunello-automation-fort_600_800_1000_1500-00-scheda_di_prodotto-es.pdf",
+    "sku": "ACC-CREM-ACERO",
+    "precioNeto": 12500,
+    "iva": 2375,
+    "precioTotal": 14875,
+    "stock": 250
+  }
+}

@@ -1,34 +1,32 @@
-# Context Summary: Resumen Continuo del Desarrollo (Fase 2 v26.0)
+# Context Summary: Resumen Continuo del Desarrollo (Fase 2 v27.0 - FASE 2 COMPLETADA Y VERIFICADA)
 ## Proyecto: Gestion_Cotizacion (Fase 2 - All Solutions SpA | RUT 77.654.321-K)
 ### Cuenta Corporativa: ventascotizawasap@gmail.com
-### Última Sincronización: 24 de Julio de 2026
+### Última Sincronización: 24 de Julio de 2026 (Pruebas E2E 5/5 PASSED & Grafo LLM Wiki 30 Nodos Completo)
 
-> **REGLA DE CONTEXTO CONTINUO:** El Agente Maestro coordina 3 subagentes especializados (`agente_diseno`, `playwright_testing_agent`, `llm_wiki_agent`) y 16 servidores MCP activos.
-
----
-
-## 🤖 1. MATRIZ DE AGENTES ESPECIALIZADOS
-
-1. **`agente_diseno` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/agente_diseno/agent.md)):**
-   - Vinculado a 5 Libretas de Investigación de NotebookLM:
-     1. UI/UX Master: `1b789113-3210-4b91-9358-85b2b54ef5d2`
-     2. Design System: `f5b4762b-f892-47cb-a2fb-fcd6d623983f`
-     3. Color & Typography: `a49eedc1-607d-4b42-b351-cb823b32904d`
-     4. Micro-Animations: `ced673a0-396b-444d-bfa5-b50019fcf4f9`
-     5. Component Architecture: `923409d1-b893-4a80-b828-45ee558eb1dc`
-   - Generó la maqueta visual [all_solutions_dashboard_pdf_mockup_1784917880275.jpg](file:///C:/Users/kibernum/.gemini/antigravity/brain/ae7cfb6a-dc4d-4766-9b93-d9a17630b876/all_solutions_dashboard_pdf_mockup_1784917880275.jpg) y el documento de tokens [sintesis_lineamientos_diseno_all_solutions.md](file:///C:/Users/kibernum/.gemini/antigravity/brain/ae7cfb6a-dc4d-4766-9b93-d9a17630b876/sintesis_lineamientos_diseno_all_solutions.md).
-
-2. **`playwright_testing_agent` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/playwright_testing_agent/agent.md)):**
-   - Ejecución de pruebas simuladas E2E, 143 presets móviles y REST API testing.
-
-3. **`llm_wiki_agent` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/llm_wiki_agent/agent.md)):**
-   - Indización por grafo Karpathy de los 20 productos reales extraídos de `allsolutions.cl` en `llm_wiki_index.json`.
+> **REGLA DE CONTEXTO CONTINUO:** La Fase 2 está 100% completada, probada y verificada end-to-end con todos los subagentes (`agente_diseno`, `playwright_testing_agent`, `llm_wiki_agent`).
 
 ---
 
-## 🏢 2. CONFIGURACIÓN DE PRODUCCIÓN Y BASE DE DATOS MYSQL
+## 🟢 1. ESTADO FINAL DE LA FASE 2
 
-- **Empresa:** All Solutions SpA | **RUT:** `77.654.321-K`
-- **Correo Comercial:** `ventascotizawasap@gmail.com`
-- **Base de Datos MySQL (`schema.sql`):** Tablas `clientes`, `cotizaciones`, `cotizacion_items` y `conversaciones`.
-- **Servicio de KPIs Analytics (`GET /api/analytics/kpis`):** Productos más/menos pedidos, mejor cliente CLP, tasa de conversión (%) y motivos de rechazo.
+- [x] **Setup & OpenSpec Pipeline:** Especificación 4-capas Kiro SDD en `.specs/`.
+- [x] **Credenciales Corporativas:** `ventascotizawasap@gmail.com`, RUT `77.654.321-K` en `.env` y `env.ts`.
+- [x] **Estructura Google Drive Local & Nube:**
+  - `docs/drive/01_Manuales_Tecnicos/`
+  - `docs/drive/02_Cotizaciones_Pendientes/`
+  - `docs/drive/03_Cotizaciones_Aprobadas/`
+  - `docs/drive/04_Cotizaciones_Rechazadas/`
+- [x] **Karpathy LLM Wiki Index (`llm_wiki_index.json`):** 30 nodos interconectados (empresa, 4 carpetas Drive, 4 estados de cotización, 20 productos reales, 19% IVA).
+- [x] **Base de Datos MySQL (`schema.sql` & `db.ts`):** Tablas `clientes`, `cotizaciones`, `cotizacion_items`, `conversaciones`.
+- [x] **Panel Analytics KPIs (`GET /api/analytics/kpis`):** Top productos, productos menos pedidos, mejores clientes CLP, tasa de conversión (%) y causales de rechazo.
+- [x] **Pruebas Unitarias Vitest:** 100% Pasadas (`npm test`).
+- [x] **Pruebas E2E Simuladas Playwright:** 5/5 Pasadas (`data/test_evidence/phase2_e2e_report.md`).
+- [x] **Sistema Visual UI/UX (`agente_diseno`):** Sintetizado desde 5 Libretas NotebookLM con render de maqueta visual.
+
+---
+
+## 🤖 2. SUBAGENTES UTILIZADOS EN ESTA ITERACIÓN
+
+1. `llm_wiki_agent`: Compilación e indización del grafo Karpathy de 30 nodos.
+2. `agente_diseno`: Síntesis de tokens de diseño desde 5 libretas NotebookLM y maqueta visual.
+3. `playwright_testing_agent`: Verificación E2E de endpoints REST (`/health`, `/webhook`, `/api/quotes/:folio/status`, `/api/analytics/kpis`).
