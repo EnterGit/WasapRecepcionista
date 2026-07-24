@@ -1,0 +1,14 @@
+import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
+import { useState } from 'react';
+export const QuoteListTable = ({ quotes, selectedFolio, onSelectQuote }) => {
+    const [filter, setFilter] = useState('TODAS');
+    const [search, setSearch] = useState('');
+    const filteredQuotes = quotes.filter((q) => {
+        const matchesFilter = filter === 'TODAS' || q.estado === filter;
+        const matchesSearch = q.folio.toLowerCase().includes(search.toLowerCase()) ||
+            q.clienteNombre.toLowerCase().includes(search.toLowerCase()) ||
+            q.clienteTelefono.includes(search);
+        return matchesFilter && matchesSearch;
+    });
+    return (_jsxs("div", { className: "card-panel", style: { height: '100%' }, children: [_jsxs("div", { className: "card-header", children: [_jsxs("h3", { className: "card-title", children: ["Cotizaciones Emitidas (", filteredQuotes.length, ")"] }), _jsxs("div", { style: { display: 'flex', gap: '0.5rem' }, children: [_jsx("input", { type: "text", placeholder: "Buscar folio, cliente o fono...", value: search, onChange: (e) => setSearch(e.target.value), style: { padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid #d8dadd', fontSize: '0.85rem' } }), _jsxs("select", { value: filter, onChange: (e) => setFilter(e.target.value), style: { padding: '0.4rem 0.6rem', borderRadius: '6px', border: '1px solid #d8dadd', fontSize: '0.85rem' }, children: [_jsx("option", { value: "TODAS", children: "Todas" }), _jsx("option", { value: "GENERADA", children: "Generadas" }), _jsx("option", { value: "ENVIADA", children: "Enviadas" }), _jsx("option", { value: "ACEPTADA", children: "Aceptadas" }), _jsx("option", { value: "RECHAZADA", children: "Rechazadas" })] })] })] }), _jsx("div", { style: { overflowX: 'auto' }, children: _jsxs("table", { className: "custom-table", children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { children: "FOLIO" }), _jsx("th", { children: "CLIENTE" }), _jsx("th", { children: "TEL\u00C9FONO" }), _jsx("th", { children: "TOTAL CLP" }), _jsx("th", { children: "ESTADO" })] }) }), _jsxs("tbody", { children: [filteredQuotes.map((q) => (_jsxs("tr", { className: selectedFolio === q.folio ? 'selected' : '', onClick: () => onSelectQuote(q), style: { cursor: 'pointer' }, children: [_jsx("td", { style: { fontWeight: 700, color: 'var(--color-accent)' }, children: q.folio }), _jsx("td", { children: q.clienteNombre }), _jsx("td", { children: q.clienteTelefono }), _jsxs("td", { style: { fontWeight: 700 }, children: ["$", q.totalClp.toLocaleString('es-CL')] }), _jsx("td", { children: _jsx("span", { className: `status-tag status-${q.estado}`, children: q.estado }) })] }, q.folio))), filteredQuotes.length === 0 && (_jsx("tr", { children: _jsx("td", { colSpan: 5, style: { textAlign: 'center', color: '#6b7280', padding: '2rem' }, children: "No se encontraron cotizaciones con los filtros aplicados." }) }))] })] }) })] }));
+};
