@@ -1,54 +1,33 @@
-# OpenSpec 03: Diseño Técnico, Modelo ERD MySQL & Arquitectura de Componentes
+# OpenSpec 03: Diseño Técnico, Modelo ERD MySQL & Stack Web App Frontend (v2.0)
 ## Proyecto: Gestion_Cotizacion (Fase 2 - All Solutions SpA)
 
 ---
 
-## 🏗️ 1. Estructura de Carpetas del Proyecto (`Gestion_Cotizacion/`)
+## 💻 1. Stack Tecnológico de la Página Web Dashboard (`src/web/`)
 
 ```text
 Gestion_Cotizacion/
-├── .antigravity/
-│   └── mcp.json                      # Configuración de 16 Servidores MCP
-├── .loop/
-│   └── STATE.md                      # Marco DAME v3.0 & Loop Memory Spine
-├── .specs/
-│   ├── 01_propuesta_funcional.md
-│   ├── 02_objetivo_alcance.md
-│   ├── 03_diseno_tecnico.md
-│   └── 04_plan_tareas.md
-├── docs/
-│   └── knowledge/
-│       ├── context_summary.md        # Resumen continuo de contexto
-│       └── llm_wiki_index.json       # Grafo de conocimiento Karpathy
-├── data/                             # PDFs generados físicamente
 ├── src/
-│   ├── config/
-│   │   └── env.ts                    # Validador Zod de variables .env
-│   ├── database/
-│   │   ├── db.ts                     # Conector Pool MySQL (mysql2/promise)
-│   │   └── schema.sql                # Definición DDL de la Base de Datos
-│   ├── repositories/
-│   │   ├── customerRepository.ts     # Repositorio MySQL de Clientes
-│   │   ├── quoteRepository.ts        # Repositorio MySQL de Cotizaciones
-│   │   └── conversationRepository.ts # Repositorio MySQL de Mensajes/RAG
-│   ├── services/
-│   │   ├── pricingService.ts         # Precios Neto CLP + 19% IVA
-│   │   ├── quoteService.ts           # Generador ReportLab PDF
-│   │   ├── geminiService.ts          # Motor RAG Dual con Gemini
-│   │   ├── chatwootService.ts        # Alertas CRM y bot_off
-│   │   └── analyticsService.ts       # Cálculos de KPIs & Estadísticas
-│   ├── controllers/
-│   │   ├── webhookController.ts      # Endpoint /webhook WhatsApp
-│   │   ├── quoteStatusController.ts  # Endpoint /api/quotes/:quoteNumber/status
-│   │   └── analyticsController.ts    # Endpoint /api/analytics/kpis
-│   ├── utils/
-│   │   └── security.ts               # HMAC SHA-256 Meta Signature
-│   └── server.ts                     # Servidor Express Backend
-├── Dockerfile                        # Multi-stage Docker Build
-├── docker-compose.yml                # MySQL 8.0 + Node Backend
-├── package.json
-└── tsconfig.json
+│   ├── web/                          # Frontend Dashboard Web (Vite + React TS)
+│   │   ├── components/
+│   │   │   ├── QuoteListTable.tsx    # Tabla interactiva con filtros por estado
+│   │   │   ├── PdfViewerPanel.tsx    # Visor PDF en vivo (Pantalla dividida)
+│   │   │   ├── CustomerChatPanel.tsx # Ficha de cliente e historial WhatsApp
+│   │   │   ├── KpiBentoGrid.tsx      # Tarjetas y gráficos Bento-Grid
+│   │   │   └── RejectionModal.tsx    # Modal emergente para ingresar motivo de rechazo
+│   │   ├── styles/
+│   │   │   └── theme.css             # Tokens HSL corporativos (Obsidian Black, Electric Accent)
+│   │   ├── App.tsx                   # Aplicación Principal SPA con 3 Pestañas
+│   │   └── main.tsx                  # Punto de entrada Vite
 ```
+
+| Capa Frontend | Tecnología Elegida | Razón de Elección |
+| :--- | :--- | :--- |
+| **Framework Core** | **Vite + React 18 (TypeScript)** | Carga en menos de 100 ms, renderizado ultrarrápido y desarrollo desacoplado. |
+| **Diseño Visual** | **CSS Modules + `agente_diseno`** | Cumple con el sistema de tokens HSL corporativo (`#111111`, `#0066CC`, Glassmorphism). |
+| **Gráficos & KPIs** | **Recharts** | Gráficos interactivos de torta (Tasa de conversión) y barras (Top productos y motivos de rechazo). |
+| **Visor de PDF** | **PDF.js / Embedded Iframe** | Permite ver el documento PDF oficial `CE-XXXXX` en pantalla dividida al lado de los botones de acción. |
+| **Iconografía** | **Lucide-React** | Iconos limpios, modernos y vectoriales. |
 
 ---
 
@@ -112,7 +91,7 @@ CREATE TABLE IF NOT EXISTS conversaciones (
 
 ---
 
-## 🌐 3. Endpoints REST API
+## 🌐 3. Endpoints REST API Backend
 
 | Método | Endpoint | Descripción | Payload / Query |
 | :--- | :--- | :--- | :--- |
