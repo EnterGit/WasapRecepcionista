@@ -1,31 +1,37 @@
 import { updateQuoteStatus } from '../repositories/quoteRepository.js';
-export async function handleQuoteStatusUpdate(req, res) {
+import { TvNotificationService } from '../services/tvNotificationService.js';
+import { GoogleSheetsSyncService } from '../services/googleSheetsSyncService.js';
+export const handleQuoteStatusUpdate = async (req, res) => {
     try {
-        const rawFolio = req.params.folio;
-        const folio = Array.isArray(rawFolio) ? rawFolio[0] : String(rawFolio || '');
+        const { folio } = req.params;
         const { estado, motivoRechazo } = req.body;
-        if (!estado || !['ACEPTADA', 'RECHAZADA'].includes(estado)) {
-            res.status(400).json({ error: 'El estado debe ser ACEPTADA o RECHAZADA.' });
-            return;
+        const folioStr = Array.isArray(folio) ? folio[0] : folio;
+        if (!folioStr) {
+            return res.status(400).json({ error: 'El parámetro folio es obligatorio en la URL' });
+        }
+        if (!estado || (estado !== 'ACEPTADA' && estado !== 'RECHAZADA')) {
+            return res.status(400).json({ error: 'El estado debe ser ACEPTADA o RECHAZADA' });
         }
         if (estado === 'RECHAZADA' && !motivoRechazo) {
-            res.status(400).json({ error: 'El parámetro motivoRechazo es obligatorio para cotizaciones rechazadas.' });
-            return;
+            return res.status(400).json({ error: 'El motivoRechazo es obligatorio al rechazar una cotización' });
         }
-        const updated = await updateQuoteStatus(folio, estado, motivoRechazo);
-        if (!updated) {
-            res.status(404).json({ error: `Cotización con folio ${folio} no encontrada.` });
-            return;
+        // 1. Actualizar estado en MySQL
+        const updatedQuote = await updateQuoteStatus(folioStr, estado, motivoRechazo);
+        if (!updatedQuote) {
+            return res.status(404).json({ error: `Cotización con folio ${folioStr} no encontrada` });
         }
-        console.log(`✅ [Estado Cotización Actualizado] Folio: ${folio} ➔ ${estado} (Motivo: ${motivoRechazo || 'N/A'})`);
-        res.status(200).json({
+        // 2. Sincronizar actualización con Google Sheets
+        await GoogleSheetsSyncService.syncToGoogleSheets(updatedQuote);
+        // 3. Notificar en vivo en la pantalla de la Smart TV LG webOS
+        await TvNotificationService.notifyQuoteEventOnTv(updatedQuote.folio, 'Cliente All Solutions', updatedQuote.totalClp, estado, motivoRechazo);
+        return res.status(200).json({
             status: 'SUCCESS',
-            message: `Cotización ${folio} actualizada a ${estado}`,
-            quote: updated
+            message: `Cotización ${folioStr} actualizada exitosamente a ${estado}`,
+            quote: updatedQuote,
         });
     }
     catch (error) {
-        console.error(`❌ Error actualizando estado de cotización: ${error}`);
-        res.status(500).json({ error: 'Error interno actualizando cotización' });
+        console.error('Error actualizando estado de cotización:', error);
+        return res.status(500).json({ error: 'Error interno al actualizar estado', details: error.message });
     }
-}
+};
