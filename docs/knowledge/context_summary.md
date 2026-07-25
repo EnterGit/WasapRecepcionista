@@ -1,18 +1,23 @@
-# Context Summary: Resumen Continuo del Desarrollo (Fase 2 v29.0 - DASHBOARD WEB APP PASSED)
+# Context Summary: Resumen Continuo del Desarrollo (Fase 2 v33.0 - AUDITORÍA Y REVISIÓN DE ESTATUS COMPLETADA)
 ## Proyecto: Gestion_Cotizacion (Fase 2 - All Solutions SpA | RUT 77.654.321-K)
 ### Cuenta Corporativa: ventascotizawasap@gmail.com
-### Última Sincronización: 24 de Julio de 2026 (Web App Dashboard UP en http://localhost:3000/)
+### Última Sincronización: 24 de Julio de 2026
 
-> **REGLA DE CONTEXTO CONTINUO:** El Web Dashboard interactivo (Vite + React 18 TS + CSS Modules + Visor PDF + Recharts) está 100% construido, compilado y en ejecución en el puerto 3000.
+> **REGLA DE CONTEXTO CONTINUO:** Todos los subagentes, conectores MCP, especificaciones Kiro SDD, la base de datos MySQL, el sincronizador de Google Sheets y la Web App Dashboard están 100% integrados, auditados y sincronizados.
 
 ---
 
-## 🎨 1. COMPONENTES FRONTEND WEB DASHBOARD CONSTRUIDOS (`src/web/`)
+## 🤖 1. MATRIZ COMPLETA DE SUBAGENTES (6 EN TOTAL)
 
-- `src/web/components/Navbar.tsx`: Encabezado corporativo All Solutions SpA con RUT `77.654.321-K`, indicador v2.0 y navegación por 3 pestañas.
-- `src/web/components/QuoteListTable.tsx`: Tabla de cotizaciones con buscador y filtros por estado (`GENERADA`, `ENVIADA`, `ACEPTADA`, `RECHAZADA`).
-- `src/web/components/PdfViewerPanel.tsx`: Visor PDF en vivo en pantalla dividida con botones interactivos `[APROBAR]` y `[RECHAZAR]`.
-- `src/web/components/RejectionModal.tsx`: Modal emergente obligatorio para registrar el motivo de rechazo.
-- `src/web/components/CustomerChatPanel.tsx`: Ficha de clientes e historial de chat WhatsApp.
-- `src/web/components/KpiBentoGrid.tsx`: Bento-grid de KPIs con métricas comerciales en tiempo real.
-- `src/web/styles/theme.css`: Sistema de tokens visuales de `agente_diseno` (Obsidian Black `#111111`, Electric Accent `#0066CC`, Glassmorphism).
+1. **`agente_control_remoto_lg` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/agente_control_remoto_lg/agent.md)):**  
+   Controlador LG webOS TV & MCP Server `mcp-lg-webos-remote`.
+2. **`agente_cotizaciones_wasap` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/agente_cotizaciones_wasap/agent.md)):**  
+   Formulario inteligente de 16 campos obligatorios, Zod `QuoteSchema` y validación RUT.
+3. **`agente_google_sheets_sync` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/agente_google_sheets_sync/agent.md)):**  
+   Sincronizador bi-direccional en Google Sheets (15 columnas) y triggers AppsScript.
+4. **`agente_diseno` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/agente_diseno/agent.md)):**  
+   Sistema visual HSL corporativo y Web Dashboard App (`http://localhost:3000/`).
+5. **`playwright_testing_agent` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/playwright_testing_agent/agent.md)):**  
+   Testing simulado E2E.
+6. **`llm_wiki_agent` ([agent.md](file:///c:/AgenteWASAP/Gestion_Cotizacion/.agents/agents/llm_wiki_agent/agent.md)):**  
+   Grafo Karpathy LLM Wiki de 30 nodos.

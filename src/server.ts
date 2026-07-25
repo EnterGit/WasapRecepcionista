@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { env } from './config/env.js';
 import { handleWebhookGET, handleWebhookPOST } from './controllers/webhookController.js';
 import { handleQuoteStatusUpdate } from './controllers/quoteStatusController.js';
@@ -15,7 +16,21 @@ app.use(express.urlencoded({ extended: true }));
 // Servir PDFs de Cotizaciones Físicos en /data
 app.use('/data', express.static(path.join(process.cwd(), 'data')));
 
-// 1. Menú Raíz Informativo (GET /)
+// Copiar index.html y theme.css a dist/web si no existen
+const srcWebDir = path.join(process.cwd(), 'src', 'web');
+const distWebDir = path.join(process.cwd(), 'dist', 'web');
+if (!fs.existsSync(distWebDir)) {
+  fs.mkdirSync(distWebDir, { recursive: true });
+}
+if (fs.existsSync(path.join(srcWebDir, 'index.html'))) {
+  fs.copyFileSync(path.join(srcWebDir, 'index.html'), path.join(distWebDir, 'index.html'));
+}
+
+// Servir estáticos de dist/web
+app.use(express.static(distWebDir));
+app.use('/styles', express.static(path.join(srcWebDir, 'styles')));
+
+// 1. Status API
 app.get('/api/status', (req, res) => {
   res.status(200).json({
     status: 'UP',
@@ -47,13 +62,12 @@ app.post('/api/quotes/:folio/status', handleQuoteStatusUpdate);
 // 5. Panel de Indicadores & KPIs Analytics (GET /api/analytics/kpis)
 app.get('/api/analytics/kpis', handleAnalyticsKpis);
 
-// Servir la aplicación Web Dashboard en la raíz /
-app.use(express.static(path.join(process.cwd(), 'src', 'web')));
+// Servir SPA React Web App
 app.get('*', (req, res, next) => {
   if (req.path.startsWith('/api') || req.path.startsWith('/webhook') || req.path.startsWith('/data')) {
     return next();
   }
-  res.sendFile(path.join(process.cwd(), 'src', 'web', 'index.html'));
+  res.sendFile(path.join(distWebDir, 'index.html'));
 });
 
 app.listen(env.PORT, () => {
@@ -62,6 +76,5 @@ app.listen(env.PORT, () => {
   console.log(`💻 Web Dashboard: http://localhost:${env.PORT}/`);
   console.log(`📍 Webhook: http://localhost:${env.PORT}/webhook`);
   console.log(`📍 KPIs Analytics: http://localhost:${env.PORT}/api/analytics/kpis`);
-  console.log(`📍 Cambio Estado Cotización: PATCH http://localhost:${env.PORT}/api/quotes/:folio/status`);
   console.log(`=================================================`);
 });

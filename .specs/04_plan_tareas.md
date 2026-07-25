@@ -1,4 +1,4 @@
-# OpenSpec 04: Plan de Tareas Granulares & Auditoría (Patrón Día del Juicio - v2.0)
+# OpenSpec 04: Plan de Tareas Granulares & Auditoría (Patrón Día del Juicio - v3.0)
 ## Proyecto: Gestion_Cotizacion (Fase 2 - All Solutions SpA)
 
 ---
@@ -37,10 +37,18 @@
   - **Precondiciones:** Servidor `Gestion_Cotizacion` activo en puerto 3000.
   - **Acciones:** Simular ciclo de vida completo: Webhook POST ➔ Guardar en MySQL ➔ Cambio de Estado ACEPTADA/RECHAZADA ➔ Verificación de KPIs (5/5 PASSED).
 
-- [ ] **Tarea 9: Desarrollo de la Página Web Dashboard (`src/web/` - Vite + React TS)**
+- [x] **Tarea 9: Desarrollo de la Página Web Dashboard (`src/web/` - Vite + React TS)**
   - **Precondiciones:** Endpoints REST API Backend funcionando (`/api/quotes`, `/api/analytics/kpis`).
   - **Acciones:** Construir componentes React: `QuoteListTable.tsx`, `PdfViewerPanel.tsx` (visor PDF pantalla dividida), `CustomerChatPanel.tsx` y `KpiBentoGrid.tsx` (Recharts gráficos).
 
-- [ ] **Tarea 10: Auditoría Visual con `agente_diseno` & Pruebas E2E de la Web App**
+- [x] **Tarea 10: Auditoría Visual con `agente_diseno` & Pruebas E2E en Navegador**
   - **Precondiciones:** Tarea 9 completada.
-  - **Acciones:** Auditar la interfaz web en Chrome DevTools verificando los tokens HSL corporativos (`#111111`, `#0066CC`, Glassmorphism) y probar los botones `[APROBAR]` y `[RECHAZAR]`.
+  - **Acciones:** Auditar la interfaz web en Chrome DevTools verificando los tokens HSL corporativos y empaquetado `bundle.js` en `http://localhost:3000/`.
+
+- [x] **Tarea 11: Definición del Formulario Inteligente WhatsApp con `agente_cotizaciones_wasap`**
+  - **Precondiciones:** `QuoteSchema` definido con Zod.
+  - **Acciones:** Definir los 16 campos obligatorios, flujo de preguntas interactivas y cálculo de Neto CLP + 19% IVA.
+
+- [x] **Tarea 12: Integración Sincronizador Google Sheets & AppsScript con `agente_google_sheets_sync`**
+  - **Precondiciones:** Patrones de los 3 repositorios GitHub (`RemmiV1`, `googlesheets-sender`, `SendWhatsappCloud`).
+  - **Acciones:** Mapear la matriz de 15 columnas en Google Sheets ("Cotizaciones_Master") y script de triggers `onEdit`.
