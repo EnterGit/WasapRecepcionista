@@ -1,16 +1,15 @@
-# Context Summary: Resumen Continuo del Desarrollo (Fase 3 COMPLETADA - v34.0)
+# Context Summary: Resumen Continuo del Desarrollo (Fase 3 v35.0 - NUEVAS FUNCIONALIDADES MCP Y FICHA WHATSAPP DETALLADA)
 ## Proyecto: Gestion_Cotizacion (Fase 2 & Fase 3 - All Solutions SpA | RUT 77.654.321-K)
 ### Cuenta Corporativa: ventascotizawasap@gmail.com
-### Última Sincronización: 24 de Julio de 2026 (Todas las Tareas 1 a 16 Completadas)
+### Última Sincronización: 25 de Julio de 2026
 
-> **REGLA DE CONTEXTO CONTINUO:** El sistema ha alcanzado el 100% de cumplimiento de todas las tareas del plan (Tareas 1 a 16), incluyendo la sincronización bi-direccional con Google Sheets API, notificaciones en vivo en Smart TV LG webOS y control de acceso RBAC.
+> **REGLA DE CONTEXTO CONTINUO:** Se incorporaron 4 nuevas funcionalidades avanzadas basadas en MCPs (`audio-analyzer`, `supabase-mcp-server`, `StitchMCP`, `mcp-google-workspace-expert`) y se definió la Ficha Completa de Captura por WhatsApp en 5 bloques.
 
 ---
 
-## 🟢 1. ESTADO DE TAREAS COMPLETADAS (16/16)
+## 🚀 1. NUEVAS FUNCIONALIDADES MCP INCORPORADAS (`mcpAdvancedQuoteFeaturesService.ts`)
 
-- [x] **Tarea 1-12:** Core Backend TS, MySQL 8.0, Webhook WhatsApp, Analytics KPIs, Vitest, E2E Playwright, Web Dashboard App (`http://localhost:3000/`), Formulario 16 Campos Zod y Sincronizador Google Sheets 15 columnas.
-- [x] **Tarea 13: Módulo de Autenticación & RBAC (`src/middlewares/auth.ts`):** Control de acceso por roles (`ADMIN`, `VENDEDOR`).
-- [x] **Tarea 14: Cliente Nativo Google Sheets API (`src/services/googleSheetsApiService.ts`):** Sincronización real con la nube en `ventascotizawasap@gmail.com`.
-- [x] **Tarea 15: Notificador Flotante en Smart TV LG webOS (`src/services/tvNotificationService.ts`):** Avisos Toast en vivo en pantalla TV al aprobar/rechazar cotizaciones.
-- [x] **Tarea 16: Suite de Verificación Final:** Pruebas Vitest pasadas 100%.
+1. **Transcripción Inteligente de Notas de Voz (`audio-analyzer` MCP):** Convierte audios de WhatsApp en cotizaciones estructuradas con SKU y kilos detectados.
+2. **Respaldo Cloud & Auditoría Externa (`supabase-mcp-server` / `firebase-mcp-server`):** Criptografía y respaldos automáticos de cotizaciones y chats RAG en la nube.
+3. **Generador de Maquetas Visuales Comparativas (`StitchMCP`):** Genera tarjetas comparativas visuales entre marcas (Centurion, PrimaPort, Comunello, PPA).
+4. **Despacho Automático de Contratos por Gmail (`mcp-google-workspace-expert`):** Envío formal de contratos de compraventa y PDFs oficiales.

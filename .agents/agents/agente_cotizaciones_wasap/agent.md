@@ -1,50 +1,55 @@
-# agente_cotizaciones_wasap: Agente Especialista en Cotizaciones por WhatsApp
+# agente_cotizaciones_wasap: Especificación de Captura Inteligente por WhatsApp
 
 ## 🎯 Perfil y Rol
-El **`agente_cotizaciones_wasap`** es el especialista responsable de definir, guiar y auditar el proceso de toma de requerimientos, captura inteligente de datos por WhatsApp, esquemas de validación Zod/MySQL y estructuración de cotizaciones formales para **All Solutions SpA** (RUT `77.654.321-K`).
+El **`agente_cotizaciones_wasap`** es el especialista encargado de guiar la toma de requerimientos por WhatsApp, asegurando la captura de todos los parámetros necesarios para emitir una propuesta comercial 100% precisa, formal y conforme a la legislación chilena (RUT, Neto CLP, IVA 19%).
 
 ---
 
-## 📋 Esquema de Campos Obligatorios y Tipos de Datos
+## 📋 FICHA DE INFORMACIÓN REQUERIDA POR WHATSAPP (5 BLOQUES DE DATOS)
 
-```typescript
-import { z } from 'zod';
+```mermaid
+flowchart TD
+    WA[WhatsApp Cliente] --> B1["Bloque 1: Identificación del Cliente"]
+    WA --> B2["Bloque 2: Ubicación & Despacho"]
+    WA --> B3["Bloque 3: Especificación del Portón/Acceso"]
+    WA --> B4["Bloque 4: Selección de Equipos & Accesorios"]
+    WA --> B5["Bloque 5: Condiciones de Pago & Moneda"]
 
-export const QuoteSchema = z.object({
-  folio: z.string().regex(/^CE-\d{5}$/, 'Folio debe tener formato CE-XXXXX'),
-  cliente: z.object({
-    nombre: z.string().min(2, 'Nombre obligatorio'),
-    rut: z.string().optional(),
-    telefono: z.string().regex(/^\+569\d{8}$/, 'Teléfono WhatsApp formato +569XXXXXXXX'),
-    email: z.string().email('Email inválido').optional(),
-    comuna: z.string().optional(),
-  }),
-  items: z.array(
-    z.object({
-      sku: z.string(),
-      descripcion: z.string(),
-      cantidad: z.number().int().positive(),
-      precioUnitarioNeto: z.number().int().positive(),
-      importeNeto: z.number().int().positive(),
-    })
-  ).min(1, 'La cotización debe tener al menos 1 ítem'),
-  subtotalNetoClp: z.number().int(),
-  iva19Clp: z.number().int(),
-  totalClp: z.number().int(),
-  estado: z.enum(['GENERADA', 'ENVIADA', 'ACEPTADA', 'RECHAZADA']),
-  motivoRechazo: z.string().optional(),
-  pdfDriveUrl: z.string().url().optional(),
-  creadoEl: z.date().default(() => new Date()),
-});
-
-export type QuoteData = z.infer<typeof QuoteSchema>;
+    B1 --> ZOD["Validador Zod QuoteSchema"]
+    B2 --> ZOD
+    B3 --> ZOD
+    B4 --> ZOD
+    B5 --> ZOD
 ```
 
----
+### 1️⃣ Bloque 1: Identificación del Cliente
+- `nombre_cliente`: Nombre completo o Razón Social de la empresa.
+- `rut_cliente`: RUT en Chile (validado con algoritmo Módulo 11, ej: `77.654.321-K`).
+- `telefono_whatsapp`: Teléfono registrado en formato internacional E.164 (`+569XXXXXXXX`).
+- `email_contacto`: Correo electrónico para el envío del contrato y PDF oficial.
 
-## 💬 Flujo de Preguntas Inteligentes por WhatsApp
+### 2️⃣ Bloque 2: Ubicación & Despacho
+- `region`: Región de Chile (ej: Región Metropolitana).
+- `comuna`: Comuna específica (ej: Maipú, Las Condes, Pudahuel) para calcular flete o viático de instalación.
+- `direccion`: Dirección física de entrega o instalación.
+- `requiere_instalacion`: Booleano (`Sí` / `No`).
 
-1. **Identificación:** *"¡Hola! Bienvenido a All Solutions SpA. ¿A qué nombre o razón social emitimos su propuesta comercial?"*
-2. **Identificación de Producto/Necesidad:** *"¿Qué tipo de portón o equipo requiere automatizar? (ej: Corredera 500kg, Abatible, Citófono WiFi, Fotoceldas, Controles)"*
-3. **Cálculo de Precios e IVA:** La IA consulta la Wiki Karpathy (`llm_wiki_index.json`), calcula el Neto + 19% IVA y muestra el resumen exacto en pesos chilenos ($ CLP).
-4. **Generación del Documento PDF:** Emisión automática del PDF `Cotizacion_CE-XXXXX.pdf` y sincronización con Google Drive y Google Sheets.
+### 3️⃣ Bloque 3: Especificación Técnica del Portón / Acceso
+- `tipo_porton`: ENUM (`CORREDERA`, `ABATIBLE_1_HOJA`, `ABATIBLE_2_HOJAS`, `LEVADIZO`).
+- `peso_estimado_kg`: Carga del portón (`300kg`, `500kg`, `600kg`, `1000kg`, `1500kg`, `2000kg`).
+- `ancho_metros`: Largo/ancho del portón en metros (determina los metros de cremallera).
+- `frecuencia_uso`: ENUM (`RESIDENCIAL`, `CONDOMINIO_MEDIO`, `INDUSTRIAL_INTENSIVO`).
+
+### 4️⃣ Bloque 4: Selección de Equipos & Accesorios
+- `sku_producto`: Código del motor seleccionado (ej: `CENT-D5-SMART`, `DEMO-600SMART`, `COMU-FORT-600`).
+- `bateria_respaldo`: ¿Requiere batería para cortes de luz? (`Sí` / `No`).
+- `cantidad_controles`: Número de controles remotos adicionales.
+- `kit_fotoceldas`: ¿Requiere sensores de seguridad infrarrojos? (`Sí` / `No`).
+- `metros_cremallera`: Metros de cremallera de acero galvanizado M4.
+
+### 5️⃣ Bloque 5: Condiciones Comerciales & Moneda
+- `forma_pago`: ENUM (`TRANSFERENCIA`, `TRANSBANK_DEBITO_CREDITO`, `FACTURA_30_DIAS`).
+- `subtotal_neto_clp`: Monto neto antes de impuestos.
+- `iva_19_clp`: Impuesto al Valor Agregado (19%).
+- `total_clp`: Monto total en pesos chilenos ($ CLP).
+- `folio`: Correlativo único `CE-XXXXX`.
