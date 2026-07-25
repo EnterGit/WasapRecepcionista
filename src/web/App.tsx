@@ -5,10 +5,12 @@ import { PdfViewerPanel } from './components/PdfViewerPanel.js';
 import { RejectionModal } from './components/RejectionModal.js';
 import { CustomerChatPanel } from './components/CustomerChatPanel.js';
 import { KpiBentoGrid } from './components/KpiBentoGrid.js';
+import { KanbanBoard } from './components/KanbanBoard.js';
+import { QuoteSimulator } from './components/QuoteSimulator.js';
 import './styles/theme.css';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'quotes' | 'customers' | 'kpis'>('quotes');
+  const [activeTab, setActiveTab] = useState<'quotes' | 'customers' | 'kpis' | 'kanban'>('quotes');
   const [quotes, setQuotes] = useState<any[]>([]);
   const [selectedQuote, setSelectedQuote] = useState<any | null>(null);
   const [isRejectionOpen, setIsRejectionOpen] = useState(false);
@@ -17,7 +19,6 @@ export const App: React.FC = () => {
   const [selectedCustomer, setSelectedCustomer] = useState<any | null>(null);
   const [kpis, setKpis] = useState<any | null>(null);
 
-  // Cargar Cotizaciones Demo / API
   useEffect(() => {
     const mockQuotes = [
       {
@@ -54,7 +55,6 @@ export const App: React.FC = () => {
     setCustomers(mockCustomers);
     setSelectedCustomer(mockCustomers[0]);
 
-    // Fetch KPIs
     fetch('/api/analytics/kpis')
       .then((res) => res.json())
       .then((data) => setKpis(data.kpis))
@@ -104,6 +104,12 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleStatusChangeFromKanban = (folio: string, newStatus: 'GENERADA' | 'ENVIADA' | 'ACEPTADA' | 'RECHAZADA') => {
+    setQuotes((prev) =>
+      prev.map((q) => (q.folio === folio ? { ...q, estado: newStatus } : q))
+    );
+  };
+
   return (
     <div className="app-container">
       <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -121,6 +127,13 @@ export const App: React.FC = () => {
               onApprove={handleApprove}
               onRejectClick={() => setIsRejectionOpen(true)}
             />
+          </div>
+        )}
+
+        {activeTab === 'kanban' && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <KanbanBoard quotes={quotes} onStatusChange={handleStatusChangeFromKanban} />
+            <QuoteSimulator />
           </div>
         )}
 

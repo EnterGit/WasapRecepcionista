@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface NavbarProps {
-  activeTab: 'quotes' | 'customers' | 'kpis';
-  setActiveTab: (tab: 'quotes' | 'customers' | 'kpis') => void;
+  activeTab: 'quotes' | 'customers' | 'kpis' | 'kanban';
+  setActiveTab: (tab: 'quotes' | 'customers' | 'kpis' | 'kanban') => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
@@ -11,7 +11,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
       <div className="navbar-brand">
         <div className="navbar-title">ALL SOLUTIONS SpA</div>
         <span className="navbar-badge">RUT: 77.654.321-K</span>
-        <span className="navbar-badge" style={{ background: '#10B981' }}>v2.0 Fase 2</span>
+        <span className="navbar-badge" style={{ background: '#10B981' }}>v5.0 Enterprise</span>
       </div>
 
       <nav className="navbar-tabs">
@@ -20,6 +20,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
           onClick={() => setActiveTab('quotes')}
         >
           📄 Cotizaciones & PDF
+        </button>
+        <button
+          className={`nav-tab ${activeTab === 'kanban' ? 'active' : ''}`}
+          onClick={() => setActiveTab('kanban')}
+        >
+          📋 Embudo Kanban & Simulador
         </button>
         <button
           className={`nav-tab ${activeTab === 'customers' ? 'active' : ''}`}

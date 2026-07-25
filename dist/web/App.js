@@ -6,6 +6,8 @@ import { PdfViewerPanel } from './components/PdfViewerPanel.js';
 import { RejectionModal } from './components/RejectionModal.js';
 import { CustomerChatPanel } from './components/CustomerChatPanel.js';
 import { KpiBentoGrid } from './components/KpiBentoGrid.js';
+import { KanbanBoard } from './components/KanbanBoard.js';
+import { QuoteSimulator } from './components/QuoteSimulator.js';
 import './styles/theme.css';
 export const App = () => {
     const [activeTab, setActiveTab] = useState('quotes');
@@ -15,7 +17,6 @@ export const App = () => {
     const [customers, setCustomers] = useState([]);
     const [selectedCustomer, setSelectedCustomer] = useState(null);
     const [kpis, setKpis] = useState(null);
-    // Cargar Cotizaciones Demo / API
     useEffect(() => {
         const mockQuotes = [
             {
@@ -50,7 +51,6 @@ export const App = () => {
         ];
         setCustomers(mockCustomers);
         setSelectedCustomer(mockCustomers[0]);
-        // Fetch KPIs
         fetch('/api/analytics/kpis')
             .then((res) => res.json())
             .then((data) => setKpis(data.kpis))
@@ -93,7 +93,10 @@ export const App = () => {
             setSelectedQuote((prev) => ({ ...prev, estado: 'RECHAZADA', motivoRechazo: motivo }));
         }
     };
-    return (_jsxs("div", { className: "app-container", children: [_jsx(Navbar, { activeTab: activeTab, setActiveTab: setActiveTab }), _jsxs("main", { className: "main-content", children: [activeTab === 'quotes' && (_jsxs("div", { className: "split-grid", style: { height: 'calc(100vh - 120px)' }, children: [_jsx(QuoteListTable, { quotes: quotes, selectedFolio: selectedQuote?.folio || null, onSelectQuote: (q) => setSelectedQuote(q) }), _jsx(PdfViewerPanel, { selectedQuote: selectedQuote, onApprove: handleApprove, onRejectClick: () => setIsRejectionOpen(true) })] })), activeTab === 'customers' && (_jsx(CustomerChatPanel, { customers: customers, selectedCustomer: selectedCustomer, onSelectCustomer: (c) => setSelectedCustomer(c), messages: [
+    const handleStatusChangeFromKanban = (folio, newStatus) => {
+        setQuotes((prev) => prev.map((q) => (q.folio === folio ? { ...q, estado: newStatus } : q)));
+    };
+    return (_jsxs("div", { className: "app-container", children: [_jsx(Navbar, { activeTab: activeTab, setActiveTab: setActiveTab }), _jsxs("main", { className: "main-content", children: [activeTab === 'quotes' && (_jsxs("div", { className: "split-grid", style: { height: 'calc(100vh - 120px)' }, children: [_jsx(QuoteListTable, { quotes: quotes, selectedFolio: selectedQuote?.folio || null, onSelectQuote: (q) => setSelectedQuote(q) }), _jsx(PdfViewerPanel, { selectedQuote: selectedQuote, onApprove: handleApprove, onRejectClick: () => setIsRejectionOpen(true) })] })), activeTab === 'kanban' && (_jsxs("div", { style: { display: 'flex', flexDirection: 'column', gap: '2rem' }, children: [_jsx(KanbanBoard, { quotes: quotes, onStatusChange: handleStatusChangeFromKanban }), _jsx(QuoteSimulator, {})] })), activeTab === 'customers' && (_jsx(CustomerChatPanel, { customers: customers, selectedCustomer: selectedCustomer, onSelectCustomer: (c) => setSelectedCustomer(c), messages: [
                             {
                                 id: 1,
                                 mensajeCliente: 'Hola, quisiera cotizar un motor Centurion D5 Smart',

@@ -1332,7 +1332,7 @@ var require_react_dom_development = __commonJS({
         return dispatcher;
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React6 = require_react(), Internals = {
+      var React7 = require_react(), Internals = {
         d: {
           f: noop,
           r: function() {
@@ -1350,7 +1350,7 @@ var require_react_dom_development = __commonJS({
         },
         p: 0,
         findDOMNode: null
-      }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React7.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
         "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
       );
@@ -2885,7 +2885,7 @@ var require_react_dom_client_development = __commonJS({
         "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
       }
       function validateOptionProps(element, props) {
-        null == props.value && ("object" === typeof props.children && null !== props.children ? React6.Children.forEach(props.children, function(child) {
+        null == props.value && ("object" === typeof props.children && null !== props.children ? React7.Children.forEach(props.children, function(child) {
           null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
             "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
           ));
@@ -18517,14 +18517,14 @@ var require_react_dom_client_development = __commonJS({
         ));
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var Scheduler = require_scheduler(), React6 = require_react(), ReactDOM2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
+      var Scheduler = require_scheduler(), React7 = require_react(), ReactDOM2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
       /* @__PURE__ */ Symbol.for("react.scope");
       var REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity");
       /* @__PURE__ */ Symbol.for("react.legacy_hidden");
       /* @__PURE__ */ Symbol.for("react.tracing_marker");
       var REACT_MEMO_CACHE_SENTINEL = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
       /* @__PURE__ */ Symbol.for("react.view_transition");
-      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+      var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React7.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
         pending: false,
         data: null,
         method: null,
@@ -21312,7 +21312,7 @@ var require_react_dom_client_development = __commonJS({
         }
       };
       (function() {
-        var isomorphicReactPackageVersion = React6.version;
+        var isomorphicReactPackageVersion = React7.version;
         if ("19.2.8" !== isomorphicReactPackageVersion)
           throw Error(
             'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.8\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21666,18 +21666,18 @@ var require_react_jsx_runtime_development = __commonJS({
       function isValidElement(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
       }
-      var React6 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+      var React7 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React7.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
         return null;
       };
-      React6 = {
+      React7 = {
         react_stack_bottom_frame: function(callStackForError) {
           return callStackForError();
         }
       };
       var specialPropKeyWarningShown;
       var didWarnAboutElementRef = {};
-      var unknownOwnerDebugStack = React6.react_stack_bottom_frame.bind(
-        React6,
+      var unknownOwnerDebugStack = React7.react_stack_bottom_frame.bind(
+        React7,
         UnknownOwner
       )();
       var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21722,11 +21722,11 @@ var require_jsx_runtime = __commonJS({
 });
 
 // src/web/main.tsx
-var import_react5 = __toESM(require_react(), 1);
+var import_react6 = __toESM(require_react(), 1);
 var import_client = __toESM(require_client(), 1);
 
 // src/web/App.tsx
-var import_react4 = __toESM(require_react(), 1);
+var import_react5 = __toESM(require_react(), 1);
 
 // src/web/components/Navbar.tsx
 var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
@@ -21735,7 +21735,7 @@ var Navbar = ({ activeTab, setActiveTab }) => {
     /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "navbar-brand", children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "navbar-title", children: "ALL SOLUTIONS SpA" }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "navbar-badge", children: "RUT: 77.654.321-K" }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "navbar-badge", style: { background: "#10B981" }, children: "v2.0 Fase 2" })
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "navbar-badge", style: { background: "#10B981" }, children: "v5.0 Enterprise" })
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", { className: "navbar-tabs", children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
@@ -21744,6 +21744,14 @@ var Navbar = ({ activeTab, setActiveTab }) => {
           className: `nav-tab ${activeTab === "quotes" ? "active" : ""}`,
           onClick: () => setActiveTab("quotes"),
           children: "\u{1F4C4} Cotizaciones & PDF"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        "button",
+        {
+          className: `nav-tab ${activeTab === "kanban" ? "active" : ""}`,
+          onClick: () => setActiveTab("kanban"),
+          children: "\u{1F4CB} Embudo Kanban & Simulador"
         }
       ),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
@@ -22124,17 +22132,220 @@ var KpiBentoGrid = ({ kpis }) => {
   ] });
 };
 
-// src/web/App.tsx
+// src/web/components/KanbanBoard.tsx
 var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
+var KanbanBoard = ({ quotes, onStatusChange }) => {
+  const columns = [
+    { id: "GENERADA", title: "\u{1F7E1} LEADS / POR REVISAR", color: "#0369a1" },
+    { id: "ENVIADA", title: "\u{1F535} COTIZACI\xD3N ENVIADA", color: "#b45309" },
+    { id: "ACEPTADA", title: "\u{1F7E2} VENTA ACEPTADA", color: "#047857" },
+    { id: "RECHAZADA", title: "\u{1F534} VENTA PERDIDA", color: "#b91c1c" }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem", minHeight: "600px" }, children: columns.map((col) => {
+    const colQuotes = quotes.filter((q) => q.estado === col.id);
+    const totalColMonto = colQuotes.reduce((acc, q) => acc + q.totalClp, 0);
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "card-panel", style: { background: "#f8fafc", display: "flex", flexDirection: "column" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { marginBottom: "1rem", paddingBottom: "0.5rem", borderBottom: `3px solid ${col.color}` }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { style: { fontSize: "0.9rem", fontWeight: 800, color: col.color }, children: col.title }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { fontSize: "0.75rem", color: "#64748b", fontWeight: 600, marginTop: "0.2rem" }, children: [
+          colQuotes.length,
+          " cotizaci\xF3n(es) \u2022 $",
+          totalColMonto.toLocaleString("es-CL"),
+          " CLP"
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.75rem" }, children: [
+        colQuotes.map((q) => /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
+          "div",
+          {
+            style: {
+              background: "#ffffff",
+              border: "1px solid #cbd5e1",
+              borderRadius: "8px",
+              padding: "0.85rem",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.05)"
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: "0.4rem" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { style: { fontWeight: 800, color: "var(--color-accent)", fontSize: "0.85rem" }, children: q.folio }),
+                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("span", { style: { fontWeight: 800, fontSize: "0.9rem" }, children: [
+                  "$",
+                  q.totalClp.toLocaleString("es-CL")
+                ] })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { fontSize: "0.85rem", fontWeight: 600, color: "#1e293b" }, children: q.clienteNombre }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { fontSize: "0.75rem", color: "#64748b", marginBottom: "0.5rem" }, children: q.clienteTelefono }),
+              q.motivoRechazo && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { fontSize: "0.75rem", color: "#b91c1c", background: "#fef2f2", padding: "0.3rem", borderRadius: "4px", marginBottom: "0.5rem" }, children: [
+                "\u26A0\uFE0F ",
+                q.motivoRechazo
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { style: { display: "flex", gap: "0.25rem", marginTop: "0.5rem" }, children: [
+                col.id !== "ENVIADA" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                  "button",
+                  {
+                    className: "btn btn-outline",
+                    style: { padding: "0.15rem 0.4rem", fontSize: "0.7rem" },
+                    onClick: () => onStatusChange(q.folio, "ENVIADA"),
+                    children: "\u27A1\uFE0F Enviada"
+                  }
+                ),
+                col.id !== "ACEPTADA" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+                  "button",
+                  {
+                    className: "btn btn-success",
+                    style: { padding: "0.15rem 0.4rem", fontSize: "0.7rem" },
+                    onClick: () => onStatusChange(q.folio, "ACEPTADA"),
+                    children: "\u2713 Aprobar"
+                  }
+                )
+              ] })
+            ]
+          },
+          q.folio
+        )),
+        colQuotes.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { style: { textAlign: "center", color: "#94a3b8", fontSize: "0.8rem", padding: "2rem 0" }, children: "Sin cotizaciones en esta etapa" })
+      ] })
+    ] }, col.id);
+  }) });
+};
+
+// src/web/components/QuoteSimulator.tsx
+var import_react4 = __toESM(require_react(), 1);
+var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
+var QuoteSimulator = () => {
+  const [sku, setSku] = (0, import_react4.useState)("CENT-D5-SMART");
+  const [neto, setNeto] = (0, import_react4.useState)(425e3);
+  const [cantidad, setCantidad] = (0, import_react4.useState)(1);
+  const [instalacion, setInstalacion] = (0, import_react4.useState)(true);
+  const costoInstalacion = instalacion ? 85e3 : 0;
+  const subtotalNeto = neto * cantidad + costoInstalacion;
+  const iva = Math.round(subtotalNeto * 0.19);
+  const totalClp = subtotalNeto + iva;
+  const catalog = [
+    { sku: "CENT-D5-SMART", nombre: "Centurion D5 Smart 500kg", neto: 425e3, garantia: "24 Meses", marca: "Centurion (Sud\xE1frica)" },
+    { sku: "DEMO-600SMART", nombre: "PrimaPort Roller 600HC 600kg", neto: 311e3, garantia: "12 Meses", marca: "PrimaPort" },
+    { sku: "COMU-FORT-600", nombre: "Comunello Fort 600 24V 600kg", neto: 389e3, garantia: "12 Meses", marca: "Comunello (Italia)" },
+    { sku: "CENT-D10-TURBO", nombre: "Centurion D10 Turbo 1000kg", neto: 68e4, garantia: "24 Meses", marca: "Centurion (Sud\xE1frica)" }
+  ];
+  const handleSelectSku = (selectedSku) => {
+    setSku(selectedSku);
+    const item = catalog.find((c) => c.sku === selectedSku);
+    if (item) setNeto(item.neto);
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "split-grid", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "card-panel", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "card-header", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "card-title", children: "\u{1F9EE} Simulador de Precios & Cotizaci\xF3n en Vivo" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "1rem" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { style: { display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem" }, children: "Seleccionar Producto / Motor:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+            "select",
+            {
+              value: sku,
+              onChange: (e) => handleSelectSku(e.target.value),
+              style: { width: "100%", padding: "0.6rem", borderRadius: "6px", border: "1px solid #cbd5e1" },
+              children: catalog.map((c) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("option", { value: c.sku, children: [
+                c.nombre,
+                " - $",
+                c.neto.toLocaleString("es-CL"),
+                " Neto"
+              ] }, c.sku))
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { style: { display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem" }, children: "Cantidad de Kits:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+              "input",
+              {
+                type: "number",
+                min: 1,
+                value: cantidad,
+                onChange: (e) => setCantidad(parseInt(e.target.value) || 1),
+                style: { width: "100%", padding: "0.6rem", borderRadius: "6px", border: "1px solid #cbd5e1" }
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { style: { display: "block", fontSize: "0.85rem", fontWeight: 600, marginBottom: "0.4rem" }, children: "\xBFIncluir Servicio de Instalaci\xF3n?" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
+              "select",
+              {
+                value: instalacion ? "SI" : "NO",
+                onChange: (e) => setInstalacion(e.target.value === "SI"),
+                style: { width: "100%", padding: "0.6rem", borderRadius: "6px", border: "1px solid #cbd5e1" },
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "SI", children: "S\xED (+$85.000 Neto)" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "NO", children: "No (Solo Suministro)" })
+                ]
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { background: "#f1f5f9", padding: "1.25rem", borderRadius: "8px", border: "1px solid #cbd5e1", marginTop: "0.5rem" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: "0.4rem" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "Subtotal Neto:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("strong", { style: { fontSize: "1.1rem" }, children: [
+              "$",
+              subtotalNeto.toLocaleString("es-CL"),
+              " CLP"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", marginBottom: "0.4rem", color: "#475569" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "IVA (19%):" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { children: [
+              "$",
+              iva.toLocaleString("es-CL"),
+              " CLP"
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("hr", { style: { margin: "0.5rem 0", borderColor: "#cbd5e1" } }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { style: { display: "flex", justifyContent: "space-between", fontSize: "1.25rem", fontWeight: 800, color: "var(--color-obsidian)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { children: "TOTAL SIMULADO:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { style: { color: "var(--color-accent)" }, children: [
+              "$",
+              totalClp.toLocaleString("es-CL"),
+              " CLP"
+            ] })
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "card-panel", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "card-header", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "card-title", children: "\u2696\uFE0F Comparativa de Equipos & Garant\xEDas" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("table", { className: "custom-table", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { children: "EQUIPO / MODELO" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { children: "MARCA" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { children: "PRECIO NETO" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { children: "GARANT\xCDA" })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("tbody", { children: catalog.map((c) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { style: { background: c.sku === sku ? "#e0f2fe" : "transparent" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { style: { fontWeight: 700 }, children: c.nombre }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { children: c.marca }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("td", { style: { fontWeight: 800 }, children: [
+            "$",
+            c.neto.toLocaleString("es-CL")
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "navbar-badge", style: { background: c.garantia.includes("24") ? "#10b981" : "#0284c7" }, children: c.garantia }) })
+        ] }, c.sku)) })
+      ] })
+    ] })
+  ] });
+};
+
+// src/web/App.tsx
+var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
 var App = () => {
-  const [activeTab, setActiveTab] = (0, import_react4.useState)("quotes");
-  const [quotes, setQuotes] = (0, import_react4.useState)([]);
-  const [selectedQuote, setSelectedQuote] = (0, import_react4.useState)(null);
-  const [isRejectionOpen, setIsRejectionOpen] = (0, import_react4.useState)(false);
-  const [customers, setCustomers] = (0, import_react4.useState)([]);
-  const [selectedCustomer, setSelectedCustomer] = (0, import_react4.useState)(null);
-  const [kpis, setKpis] = (0, import_react4.useState)(null);
-  (0, import_react4.useEffect)(() => {
+  const [activeTab, setActiveTab] = (0, import_react5.useState)("quotes");
+  const [quotes, setQuotes] = (0, import_react5.useState)([]);
+  const [selectedQuote, setSelectedQuote] = (0, import_react5.useState)(null);
+  const [isRejectionOpen, setIsRejectionOpen] = (0, import_react5.useState)(false);
+  const [customers, setCustomers] = (0, import_react5.useState)([]);
+  const [selectedCustomer, setSelectedCustomer] = (0, import_react5.useState)(null);
+  const [kpis, setKpis] = (0, import_react5.useState)(null);
+  (0, import_react5.useEffect)(() => {
     const mockQuotes = [
       {
         folio: "CE17384",
@@ -22211,11 +22422,16 @@ var App = () => {
       setSelectedQuote((prev) => ({ ...prev, estado: "RECHAZADA", motivoRechazo: motivo }));
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "app-container", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Navbar, { activeTab, setActiveTab }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("main", { className: "main-content", children: [
-      activeTab === "quotes" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "split-grid", style: { height: "calc(100vh - 120px)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+  const handleStatusChangeFromKanban = (folio, newStatus) => {
+    setQuotes(
+      (prev) => prev.map((q) => q.folio === folio ? { ...q, estado: newStatus } : q)
+    );
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "app-container", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Navbar, { activeTab, setActiveTab }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("main", { className: "main-content", children: [
+      activeTab === "quotes" && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "split-grid", style: { height: "calc(100vh - 120px)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
           QuoteListTable,
           {
             quotes,
@@ -22223,7 +22439,7 @@ var App = () => {
             onSelectQuote: (q) => setSelectedQuote(q)
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
           PdfViewerPanel,
           {
             selectedQuote,
@@ -22232,7 +22448,11 @@ var App = () => {
           }
         )
       ] }),
-      activeTab === "customers" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+      activeTab === "kanban" && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: "2rem" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(KanbanBoard, { quotes, onStatusChange: handleStatusChangeFromKanban }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(QuoteSimulator, {})
+      ] }),
+      activeTab === "customers" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
         CustomerChatPanel,
         {
           customers,
@@ -22248,9 +22468,9 @@ var App = () => {
           ]
         }
       ),
-      activeTab === "kpis" && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(KpiBentoGrid, { kpis })
+      activeTab === "kpis" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(KpiBentoGrid, { kpis })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
       RejectionModal,
       {
         folio: selectedQuote?.folio || "",
@@ -22264,9 +22484,9 @@ var App = () => {
 var App_default = App;
 
 // src/web/main.tsx
-var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
+var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
 import_client.default.createRoot(document.getElementById("root")).render(
-  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react5.default.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(App_default, {}) })
+  /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(import_react6.default.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(App_default, {}) })
 );
 /*! Bundled license information:
 
